@@ -9,7 +9,7 @@ obj/
 *.svd
 /*.csproj
 *.unityproj
-/*.sln
+*.sln
 *.suo
 *.tmp
 *.user
@@ -33,3 +33,5 @@ sysinfo.txt
 .Trashes
 ehthumbs.db
 Thumbs.db
+*.sln
+*.sln
