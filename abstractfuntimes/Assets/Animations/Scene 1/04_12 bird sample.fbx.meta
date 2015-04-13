@@ -49,6 +49,7 @@ ModelImporter:
     3300000: BIRD_GEO_2
     4300000: BIRD_GEO
     4300002: BIRD_GEO_2
+    6400000: BIRD_GEO_2
     9500000: //RootNode
     13700000: BIRD_GEO
   materials:

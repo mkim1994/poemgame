@@ -32,6 +32,11 @@ ModelImporter:
     4300004: rope1
     4300006: big_branch1
     4300008: polySurface1
+    6400000: big_branch1
+    6400002: platform
+    6400004: polySurface1
+    6400006: rope
+    6400008: rope1
   materials:
     importMaterials: 1
     materialName: 0
@@ -53,7 +58,7 @@ ModelImporter:
     lODScreenPercentages: []
     globalScale: 1
     meshCompression: 0
-    addColliders: 0
+    addColliders: 1
     importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
