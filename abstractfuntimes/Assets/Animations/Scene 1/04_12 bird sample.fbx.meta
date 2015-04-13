@@ -1,0 +1,111 @@
+fileFormatVersion: 2
+guid: 56baab00797c03849ab40b8c63c44aea
+timeCreated: 1428892478
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: //RootNode
+    100002: BIRD_GEO
+    100004: BIRD_GEO_2
+    100006: HEAD
+    100008: head
+    100010: neck
+    100012: SPINE_ROOT
+    100014: spine_root
+    100016: TAIL_L
+    100018: tail_L
+    100020: TAIL_L_offset
+    100022: tail_L_tip
+    100024: TAIL_M
+    100026: tail_m
+    100028: TAIL_M_OFFSET
+    100030: tail_m_tip
+    100032: TAIL_R
+    100034: tail_R
+    100036: TAIL_R_OFFSET
+    100038: tail_R_tip
+    400000: //RootNode
+    400002: BIRD_GEO
+    400004: BIRD_GEO_2
+    400006: HEAD
+    400008: head
+    400010: neck
+    400012: SPINE_ROOT
+    400014: spine_root
+    400016: TAIL_L
+    400018: tail_L
+    400020: TAIL_L_offset
+    400022: tail_L_tip
+    400024: TAIL_M
+    400026: tail_m
+    400028: TAIL_M_OFFSET
+    400030: tail_m_tip
+    400032: TAIL_R
+    400034: tail_R
+    400036: TAIL_R_OFFSET
+    400038: tail_R_tip
+    2300000: BIRD_GEO_2
+    3300000: BIRD_GEO_2
+    4300000: BIRD_GEO
+    4300002: BIRD_GEO_2
+    9500000: //RootNode
+    13700000: BIRD_GEO
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
