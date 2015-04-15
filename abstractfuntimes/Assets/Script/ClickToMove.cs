@@ -35,7 +35,7 @@ public class ClickToMove : MonoBehaviour {
 		destinationPosition = myTransform.position;			// prevents myTransform reset
 	}
 	
-	void Update () {
+	void FixedUpdate () {
 		
 		// keep track of the distance between this gameObject and destinationPosition
 		destinationDistance = Vector3.Distance(destinationPosition, myTransform.position);
