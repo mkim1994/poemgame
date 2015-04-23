@@ -46,20 +46,19 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\Script\Ball.cs" />
-     <Compile Include="Assets\Script\ClickToMove.cs" />
-     <Compile Include="Assets\Script\MoveCamera.cs" />
-     <Compile Include="Assets\Script\TextActivity.cs" />
+     <Compile Include="Assets\Characters\ClickToMove.cs" />
+     <Compile Include="Assets\Characters\Controller.cs" />
+     <Compile Include="Assets\Misc\Script\Ball.cs" />
+     <Compile Include="Assets\Misc\Script\MoveCamera.cs" />
+     <Compile Include="Assets\Misc\Standard Assets\Cameras\Scripts\AbstractTargetFollower.cs" />
+     <Compile Include="Assets\Misc\Standard Assets\Cameras\Scripts\LookatTarget.cs" />
+     <Compile Include="Assets\Text\TextActivity.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
  <Reference Include="UnityEditor.iOS.Extensions.Xcode">
  <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/iossupport/UnityEditor.iOS.Extensions.Xcode.dll</HintPath>
  </Reference>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="Assembly-CSharp-firstpass.csproj">
-      <Project>{F642190D-9728-0489-407C-317C0CC7C4F2}</Project>      <Name>Assembly-CSharp-firstpass</Name>    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
