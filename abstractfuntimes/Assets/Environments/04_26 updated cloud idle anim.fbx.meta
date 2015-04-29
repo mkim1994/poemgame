@@ -1,15 +1,24 @@
 fileFormatVersion: 2
-guid: 506455f4dc2b66f4e842ec4ea52e6c79
-timeCreated: 1429333362
+guid: abb3d5a9b0c709a4891d5b4b36cc009b
+timeCreated: 1430333684
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
+    100002: cloud_1
+    100004: cloud_2
+    100006: cloud_3
+    100008: Clouds
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: sky_env
+    400002: cloud_1
+    400004: cloud_2
+    400006: cloud_3
+    400008: Clouds
+    4300000: Clouds
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Clouds
   materials:
     importMaterials: 1
     materialName: 0
@@ -63,7 +72,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   additionalBone: 0
   userData: 
   assetBundleName: 
