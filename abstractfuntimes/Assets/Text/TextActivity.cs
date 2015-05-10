@@ -5,24 +5,15 @@ public class TextActivity : MonoBehaviour {
 
 	public Sprite one;
 	public Sprite two;
-
-	public int line;
-
-	//private Animator birdanim;
-	//private Animator fishanim;
-
-	Animator birdanim;
-	Animator fishanim;
-
-	Animator skyanim;
-	Animator oceananim;
-
 	public GameObject A;
 	public GameObject B;
-
+	public int line;
+	Animator birdanim;
+	Animator fishanim;
+	Animator skyanim;
+	Animator oceananim;
 	BoxCollider box1;
 	CapsuleCollider box2;
-
 	GameMaster gm;
 
 	private SpriteRenderer spriteRenderer;
@@ -31,14 +22,16 @@ public class TextActivity : MonoBehaviour {
 		gm = GameObject.Find("GM").GetComponent<GameMaster>();
 		box1 = GetComponent<BoxCollider>();
 		box2 = GetComponent<CapsuleCollider>();
-
 		spriteRenderer = GetComponent<SpriteRenderer>();
-		if(spriteRenderer.sprite == null)
-			spriteRenderer.sprite = one;
 
 		if(line==3){
 			skyanim = A.transform.FindChild ("sky model").gameObject.GetComponent<Animator>();
 			oceananim = B.transform.FindChild ("ocean model").gameObject.GetComponent<Animator>();
+
+			skyanim.SetBool ("IsChaos",true);
+			skyanim.SetBool ("IsOrder",false);
+			oceananim.SetBool ("IsChaos",true);
+			oceananim.SetBool ("IsOrder",false);
 		}
 		if(line==4){
 			birdanim = A.transform.FindChild ("Bird Model").gameObject.GetComponent<Animator>();
