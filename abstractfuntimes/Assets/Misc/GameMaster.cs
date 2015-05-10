@@ -12,8 +12,10 @@ public class GameMaster : MonoBehaviour {
 
 	public bool birdyes;
 	public bool skyyes;
-	public bool chaosyes;
-	public bool fightyes;
+	public bool orderyes;
+	public bool flowyes;
+
+	public int combocount; //2^4 = 16
 
 	Camera cam;
 	Camera charcam;
@@ -25,15 +27,15 @@ public class GameMaster : MonoBehaviour {
 
 	int zoom = 2;
 	int normal = 50;
-	float smooth = 0.5f;
+//	float smooth = 0.5f;
 
 	void Start () {
 		fps.SetActive (false);
 		thirdpcam.SetActive (true);
 		birdyes = true;
 		skyyes = true;
-		chaosyes = true;
-		fightyes = true;
+		orderyes = true;
+		flowyes = true;
 		zoomyes = false;
 
 		cam = thirdpcam.GetComponent<Camera>();

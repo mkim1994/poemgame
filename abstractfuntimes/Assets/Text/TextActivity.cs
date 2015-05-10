@@ -12,6 +12,11 @@ public class TextActivity : MonoBehaviour {
 	Animator fishanim;
 	Animator skyanim;
 	Animator oceananim;
+	Animator bubbleanim1;
+	Animator bubbleanim2;
+	Animator cloudanim1;
+	Animator cloudanim2;
+
 	BoxCollider box1;
 	CapsuleCollider box2;
 	GameMaster gm;
@@ -27,11 +32,24 @@ public class TextActivity : MonoBehaviour {
 		if(line==3){
 			skyanim = A.transform.FindChild ("sky model").gameObject.GetComponent<Animator>();
 			oceananim = B.transform.FindChild ("ocean model").gameObject.GetComponent<Animator>();
+			cloudanim1 = A.transform.FindChild("clouds1").gameObject.GetComponent<Animator>();
+			cloudanim2 = A.transform.FindChild("clouds2").gameObject.GetComponent<Animator>();
+			bubbleanim1 = B.transform.FindChild("bubble1").gameObject.GetComponent<Animator>();
+			bubbleanim2 = B.transform.FindChild("bubble2").gameObject.GetComponent<Animator>();
 
-			skyanim.SetBool ("IsChaos",true);
-			skyanim.SetBool ("IsOrder",false);
-			oceananim.SetBool ("IsChaos",true);
-			oceananim.SetBool ("IsOrder",false);
+
+			skyanim.SetBool ("IsChaos",false);
+			skyanim.SetBool ("IsOrder",true);
+			cloudanim1.SetBool("IsChaos",false);
+			cloudanim1.SetBool("IsOrder",true);
+			cloudanim2.SetBool("IsChaos",false);
+			cloudanim2.SetBool("IsOrder",true);
+			oceananim.SetBool ("IsChaos",false);
+			oceananim.SetBool ("IsOrder",true);
+			bubbleanim1.SetBool("IsChaos",false);
+			bubbleanim1.SetBool("IsOrder",true);
+			bubbleanim2.SetBool("IsChaos",false);
+			bubbleanim2.SetBool("IsOrder",true);
 		}
 		if(line==4){
 			birdanim = A.transform.FindChild ("Bird Model").gameObject.GetComponent<Animator>();
@@ -61,10 +79,10 @@ public class TextActivity : MonoBehaviour {
 					B.SetActive (true);
 				}
 				else if(line == 3){
-					gm.chaosyes = false;
+					gm.orderyes = false;
 				}
 				else if(line == 4){
-					gm.fightyes = false;
+					gm.flowyes = false;
 				}
 			}
 			else if(spriteRenderer.sprite == two){
@@ -83,10 +101,10 @@ public class TextActivity : MonoBehaviour {
 					A.SetActive (true);
 				}
 				else if(line == 3){
-					gm.chaosyes = true;
+					gm.orderyes = true;
 				}
 				else if(line == 4){
-					gm.fightyes = true;
+					gm.flowyes = true;
 				}
 			}
 		}
@@ -94,39 +112,55 @@ public class TextActivity : MonoBehaviour {
 
 	void Update(){
 		if(line==3){
-			if(gm.skyyes && !gm.chaosyes){
-				skyanim.SetBool ("IsChaos",false);
-				skyanim.SetBool ("IsOrder",true);
-			}
-			else if(!gm.skyyes && !gm.chaosyes){
-				oceananim.SetBool ("IsChaos",false);
-				oceananim.SetBool ("IsOrder",true);
-			}
-			else if(gm.skyyes && gm.chaosyes){
+			if(gm.skyyes && !gm.orderyes){
 				skyanim.SetBool ("IsChaos",true);
 				skyanim.SetBool ("IsOrder",false);
+				cloudanim1.SetBool("IsChaos",true);
+				cloudanim1.SetBool("IsOrder",false);
+				cloudanim2.SetBool("IsChaos",true);
+				cloudanim2.SetBool("IsOrder",false);
 			}
-			else if(!gm.skyyes && gm.chaosyes){
+			else if(!gm.skyyes && !gm.orderyes){
 				oceananim.SetBool ("IsChaos",true);
 				oceananim.SetBool ("IsOrder",false);
+				bubbleanim1.SetBool("IsChaos",true);
+				bubbleanim1.SetBool("IsOrder",false);
+				bubbleanim2.SetBool("IsChaos",true);
+				bubbleanim2.SetBool("IsOrder",false);
+			}
+			else if(gm.skyyes && gm.orderyes){
+				skyanim.SetBool ("IsChaos",false);
+				skyanim.SetBool ("IsOrder",true);
+				cloudanim1.SetBool("IsChaos",false);
+				cloudanim1.SetBool("IsOrder",true);
+				cloudanim2.SetBool("IsChaos",false);
+				cloudanim2.SetBool("IsOrder",true);
+			}
+			else if(!gm.skyyes && gm.orderyes){
+				oceananim.SetBool ("IsChaos",false);
+				oceananim.SetBool ("IsOrder",true);
+				bubbleanim1.SetBool("IsChaos",false);
+				bubbleanim1.SetBool("IsOrder",true);
+				bubbleanim2.SetBool("IsChaos",false);
+				bubbleanim2.SetBool("IsOrder",true);
 			}
 		}
 		else if(line==4){
-			if(gm.birdyes && !gm.fightyes){
-				birdanim.SetBool ("IsFighting",false);
-				birdanim.SetBool ("IsFlowing",true);
-			}
-			else if(!gm.birdyes && !gm.fightyes){
-				fishanim.SetBool ("IsFighting",false);
-				fishanim.SetBool ("IsFlowing",true);
-			}
-			else if(gm.birdyes && gm.fightyes){
+			if(gm.birdyes && !gm.flowyes){
 				birdanim.SetBool ("IsFighting",true);
 				birdanim.SetBool ("IsFlowing",false);
 			}
-			else if(!gm.birdyes && gm.fightyes){
+			else if(!gm.birdyes && !gm.flowyes){
 				fishanim.SetBool ("IsFighting",true);
 				fishanim.SetBool ("IsFlowing",false);
+			}
+			else if(gm.birdyes && gm.flowyes){
+				birdanim.SetBool ("IsFighting",false);
+				birdanim.SetBool ("IsFlowing",true);
+			}
+			else if(!gm.birdyes && gm.flowyes){
+				fishanim.SetBool ("IsFighting",false);
+				fishanim.SetBool ("IsFlowing",true);
 			}
 		}
 	}
