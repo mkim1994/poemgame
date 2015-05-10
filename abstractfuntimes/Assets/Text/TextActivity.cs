@@ -10,12 +10,18 @@ public class TextActivity : MonoBehaviour {
 
 	//private Animator birdanim;
 	//private Animator fishanim;
+
+	Animator birdanim;
+	Animator fishanim;
+
+	Animator skyanim;
+	Animator oceananim;
+
 	public GameObject A;
 	public GameObject B;
 
-	private Color32 color1 = new Color32(129,210,255,5);
-	private Color32 color2 = new Color32(25,78,109,5);
-	//public Camera cam;
+	BoxCollider box1;
+	CapsuleCollider box2;
 
 	GameMaster gm;
 
@@ -23,89 +29,112 @@ public class TextActivity : MonoBehaviour {
 
 	void Start(){
 		gm = GameObject.Find("GM").GetComponent<GameMaster>();
-		//cam = GetComponent<Camera>();
-		Camera.main.clearFlags = CameraClearFlags.SolidColor;
+		box1 = GetComponent<BoxCollider>();
+		box2 = GetComponent<CapsuleCollider>();
 
 		spriteRenderer = GetComponent<SpriteRenderer>();
 		if(spriteRenderer.sprite == null)
 			spriteRenderer.sprite = one;
 
+		if(line==3){
+			skyanim = A.transform.FindChild ("sky model").gameObject.GetComponent<Animator>();
+			oceananim = B.transform.FindChild ("ocean model").gameObject.GetComponent<Animator>();
+		}
+		if(line==4){
+			birdanim = A.transform.FindChild ("Bird Model").gameObject.GetComponent<Animator>();
+			fishanim = B.transform.FindChild ("Fish Model").gameObject.GetComponent<Animator>();
+		}
 
-		//birdanim = bird.GetComponent<Animator>();
-		//fishanim = fish.GetComponent<Animator>();
-
-
-
+		B.SetActive (false);
 	}
 
 	void OnMouseOver()
 	{
-		/*transform.localScale = new Vector3(Mathf.PingPong(Time.time,0.4f)+1f,
-		                                   Mathf.PingPong(Time.time, 0.4f)+1f
-		                                   ,0);
-		           */                        
-		//transform.localScale+=new Vector3(0.1f,0.1f,0);
-
 		if(Input.GetMouseButtonDown (0)){
 
 			if(spriteRenderer.sprite == one){
 				spriteRenderer.sprite = two;
-				A.SetActive (false);
-				B.SetActive (true);
+				box1.enabled = false;
+				box2.enabled = true;
+
 				if(line == 1){
+					A.SetActive (false);
+					B.SetActive (true);
 					gm.birdyes = false;
 				}
 				else if(line == 2){
 					gm.skyyes = false;
-					Camera.main.backgroundColor = color2;
-
+					A.SetActive (false);
+					B.SetActive (true);
+				}
+				else if(line == 3){
+					gm.chaosyes = false;
+				}
+				else if(line == 4){
+					gm.fightyes = false;
 				}
 			}
 			else if(spriteRenderer.sprite == two){
 				spriteRenderer.sprite = one;
-				B.SetActive (false);
-				A.SetActive (true);
+				box1.enabled = true;
+				box2.enabled = false;
+
 				if(line == 1){
 					gm.birdyes = true;
-
+					B.SetActive (false);
+					A.SetActive (true);
 				}
-				else if(line == 2)
+				else if(line == 2){
 					gm.skyyes = true;
-					Camera.main.backgroundColor = color1;
-
+					B.SetActive (false);
+					A.SetActive (true);
+				}
+				else if(line == 3){
+					gm.chaosyes = true;
+				}
+				else if(line == 4){
+					gm.fightyes = true;
+				}
 			}
 		}
-
 	}
 
-	/*void OnMouseExit()
-	{
-		transform.localScale = new Vector3(1f,1f,0);
-	}*/
 	void Update(){
-
-		//transform.localScale = new Vector3(1f,1f,0);
-
-
-
+		if(line==3){
+			if(gm.skyyes && !gm.chaosyes){
+				skyanim.SetBool ("IsChaos",false);
+				skyanim.SetBool ("IsOrder",true);
+			}
+			else if(!gm.skyyes && !gm.chaosyes){
+				oceananim.SetBool ("IsChaos",false);
+				oceananim.SetBool ("IsOrder",true);
+			}
+			else if(gm.skyyes && gm.chaosyes){
+				skyanim.SetBool ("IsChaos",true);
+				skyanim.SetBool ("IsOrder",false);
+			}
+			else if(!gm.skyyes && gm.chaosyes){
+				oceananim.SetBool ("IsChaos",true);
+				oceananim.SetBool ("IsOrder",false);
+			}
+		}
+		else if(line==4){
+			if(gm.birdyes && !gm.fightyes){
+				birdanim.SetBool ("IsFighting",false);
+				birdanim.SetBool ("IsFlowing",true);
+			}
+			else if(!gm.birdyes && !gm.fightyes){
+				fishanim.SetBool ("IsFighting",false);
+				fishanim.SetBool ("IsFlowing",true);
+			}
+			else if(gm.birdyes && gm.fightyes){
+				birdanim.SetBool ("IsFighting",true);
+				birdanim.SetBool ("IsFlowing",false);
+			}
+			else if(!gm.birdyes && gm.fightyes){
+				fishanim.SetBool ("IsFighting",true);
+				fishanim.SetBool ("IsFlowing",false);
+			}
+		}
 	}
-
 }
-
-
-/*
-public Color color1 = Color.red;
-public Color color2 = Color.blue;
-public float duration = 3.0F;
-
-Camera camera;
-
-void Start() {
-	camera = GetComponent<Camera>();
-	camera.clearFlags = CameraClearFlags.SolidColor;
-}
-
-void Update() {
-	float t = Mathf.PingPong(Time.time, duration) / duration;
-	camera.backgroundColor = Color.Lerp(color1, color2, t);
-}*/

@@ -46,13 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\CharCamera.cs" />
-     <Compile Include="Assets\CharControl.cs" />
+     <Compile Include="Assets\Characters\CharCamera.cs" />
+     <Compile Include="Assets\Characters\CharControl.cs" />
      <Compile Include="Assets\Characters\ClickToMove.cs" />
      <Compile Include="Assets\Characters\Controller.cs" />
-     <Compile Include="Assets\Misc\Script\Ball.cs" />
-     <Compile Include="Assets\Misc\Script\GameMaster.cs" />
-     <Compile Include="Assets\Misc\Script\MoveCamera.cs" />
+     <Compile Include="Assets\Misc\ButtonAction.cs" />
+     <Compile Include="Assets\Misc\FadeIn.cs" />
+     <Compile Include="Assets\Misc\GameMaster.cs" />
+     <Compile Include="Assets\Misc\Gradient.cs" />
+     <Compile Include="Assets\Misc\GradientBackground.cs" />
      <Compile Include="Assets\Text\TextActivity.cs" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />

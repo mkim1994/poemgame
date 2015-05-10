@@ -8,8 +8,8 @@ public class CharCamera : MonoBehaviour {
 	GameMaster gm;
 
 
-	private Color32 color1 = new Color32(129,210,255,5);
-	private Color32 color2 = new Color32(25,78,109,5);
+	private Color32 color1 = new Color32(129,210,255,5); //light blue
+	private Color32 color2 = new Color32(25,78,109,5); //dark blue
 
 	void Start () {
 		cam = GetComponent<Camera>();
@@ -21,9 +21,11 @@ public class CharCamera : MonoBehaviour {
 	void Update () {
 
 		if(gm.skyyes){
+			cam.clearFlags = CameraClearFlags.SolidColor;
 			cam.backgroundColor = color1;
 		}
 		else if(!gm.skyyes){
+			cam.clearFlags = CameraClearFlags.SolidColor;
 			cam.backgroundColor = color2;
 		}
 
