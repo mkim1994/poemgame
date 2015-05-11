@@ -1,28 +1,26 @@
 ﻿
 // Original script by wbokunic - http://forum.unity3d.com/threads/52001-Movie-Player-for-Indie-Users
 // Modified C# version by Ronan Tumelty
+//modified by meeeee
 
 using UnityEngine;
 using System.Collections;
 using System.IO;
 
-//[RequireComponent(typeof(AudioSource))]
 public class VideoPlayer : MonoBehaviour {
 	Object[] movie_stills;
 	int number_of_stills = 0;
 	public bool loop = false;
 	public bool playOnStart = false;
 	public int fps = 30;
-	//public AudioClip sound;
-	//public string resourceSubfolder = "";
 	
 	private int stills = 0;
 	private bool play = false;
 	private bool loaded = false;
-	
-	void Update () {
 
-		//Debug.Log(movie_stills);
+	FadeIn fade;
+
+	void Update () {
 
 		if (!loaded) {
 			StartCoroutine(ImportVideo());
@@ -42,49 +40,48 @@ public class VideoPlayer : MonoBehaviour {
 		if(loop){
 			Debug.Log("looped. stills: " + stills + ", length: " + movie_stills.Length);
 			if(stills >= movie_stills.Length) {
-		/*		audio.Stop();
-				audio.clip = sound;
-				audio.Play();*/
+
 				stills = 0;
 				Debug.Log("restarting. stills: " + stills);
 			}
 		} else {
 			if(stills > movie_stills.Length) {
-				//audio.Stop();
 				stills -= 1;
 			}
 		}
 		
 		if (stills >= 0 && stills < movie_stills.Length) {
-			Texture MainTex = movie_stills[stills] as Texture;
+			Texture2D MainTex = movie_stills[stills] as Texture2D;
 			GetComponent<Renderer>().material.SetTexture("_MainTex", MainTex);
 			stills += 1;
 			int fps_fixer = fps*3;
 			float wait_time = 1.0f/fps_fixer;
 			yield return new WaitForSeconds(wait_time);
-			/*if(!audio.clip){
-				if(sound){
-					audio.clip = sound;
-					audio.Play();
-				}
-			}*/
 			play = true;
 		}
+		else{
+			fade.BeginFade(1);
+			Invoke("loadtitle",1.0f);
+
+		}
 	}
-	
+
+	void loadtitle(){
+		Application.LoadLevel("Title");
+	}
+
 	public void Play() { play = true; }
 	public void Pause() { play = false; }
 	
 	void Start ()
 	{
-		//audio.loop = false;
 		number_of_stills -= 1;
+
+		fade = GameObject.Find ("Transitions").GetComponent<FadeIn>();
 	}
-	
-	
+
 	IEnumerator ImportVideo() {
-		//movie_stills = Resources.LoadAll(resourceSubfolder, typeof(Texture));
-		movie_stills = Resources.LoadAll("Cutscene");
+		movie_stills = Resources.LoadAll("");
 		loaded = true;
 		if (playOnStart)
 			play = true;   
@@ -93,8 +90,6 @@ public class VideoPlayer : MonoBehaviour {
 	
 	public void UnloadFromMemory() {
 		play = false;
-		//audio.Stop();
-		
 		foreach (Object o in movie_stills) Destroy(o);
 	}
 }
