@@ -9,7 +9,7 @@ obj/
 *.svd
 /*.csproj
 *.unityproj
-*.sln
+/*.sln
 *.suo
 *.tmp
 *.user

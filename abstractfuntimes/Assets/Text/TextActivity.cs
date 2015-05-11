@@ -14,14 +14,21 @@ public class TextActivity : MonoBehaviour {
 	Animator oceananim;
 	Animator bubbleanim1;
 	Animator bubbleanim2;
+
 	Animator cloudanim1;
+	Animator cloudanim1a;
+	Animator cloudanim1b;
 	Animator cloudanim2;
+	Animator cloudanim2a;
+	Animator cloudanim2b;
 
 	BoxCollider box1;
 	CapsuleCollider box2;
 	GameMaster gm;
 
 	private SpriteRenderer spriteRenderer;
+
+	public Sprite[] linechanges;
 
 	void Start(){
 		gm = GameObject.Find("GM").GetComponent<GameMaster>();
@@ -33,7 +40,13 @@ public class TextActivity : MonoBehaviour {
 			skyanim = A.transform.FindChild ("sky model").gameObject.GetComponent<Animator>();
 			oceananim = B.transform.FindChild ("ocean model").gameObject.GetComponent<Animator>();
 			cloudanim1 = A.transform.FindChild("clouds1").gameObject.GetComponent<Animator>();
+			cloudanim1a = A.transform.FindChild("clouds1a").gameObject.GetComponent<Animator>();
+			cloudanim1b = A.transform.FindChild("clouds1b").gameObject.GetComponent<Animator>();
+
 			cloudanim2 = A.transform.FindChild("clouds2").gameObject.GetComponent<Animator>();
+			cloudanim2a = A.transform.FindChild("clouds2a").gameObject.GetComponent<Animator>();
+			cloudanim2b = A.transform.FindChild("clouds2b").gameObject.GetComponent<Animator>();
+
 			bubbleanim1 = B.transform.FindChild("bubble1").gameObject.GetComponent<Animator>();
 			bubbleanim2 = B.transform.FindChild("bubble2").gameObject.GetComponent<Animator>();
 
@@ -42,8 +55,18 @@ public class TextActivity : MonoBehaviour {
 			skyanim.SetBool ("IsOrder",true);
 			cloudanim1.SetBool("IsChaos",false);
 			cloudanim1.SetBool("IsOrder",true);
+			cloudanim1a.SetBool("IsChaos",false);
+			cloudanim1a.SetBool("IsOrder",true);
+			cloudanim1b.SetBool("IsChaos",false);
+			cloudanim1b.SetBool("IsOrder",true);
+
 			cloudanim2.SetBool("IsChaos",false);
 			cloudanim2.SetBool("IsOrder",true);
+			cloudanim2a.SetBool("IsChaos",false);
+			cloudanim2a.SetBool("IsOrder",true);
+			cloudanim2b.SetBool("IsChaos",false);
+			cloudanim2b.SetBool("IsOrder",true);
+
 			oceananim.SetBool ("IsChaos",false);
 			oceananim.SetBool ("IsOrder",true);
 			bubbleanim1.SetBool("IsChaos",false);
@@ -119,6 +142,14 @@ public class TextActivity : MonoBehaviour {
 				cloudanim1.SetBool("IsOrder",false);
 				cloudanim2.SetBool("IsChaos",true);
 				cloudanim2.SetBool("IsOrder",false);
+				cloudanim1a.SetBool("IsChaos",true);
+				cloudanim1a.SetBool("IsOrder",false);
+				cloudanim2a.SetBool("IsChaos",true);
+				cloudanim2a.SetBool("IsOrder",false);
+				cloudanim1b.SetBool("IsChaos",true);
+				cloudanim1b.SetBool("IsOrder",false);
+				cloudanim2b.SetBool("IsChaos",true);
+				cloudanim2b.SetBool("IsOrder",false);
 			}
 			else if(!gm.skyyes && !gm.orderyes){
 				oceananim.SetBool ("IsChaos",true);
@@ -135,6 +166,14 @@ public class TextActivity : MonoBehaviour {
 				cloudanim1.SetBool("IsOrder",true);
 				cloudanim2.SetBool("IsChaos",false);
 				cloudanim2.SetBool("IsOrder",true);
+				cloudanim1a.SetBool("IsChaos",false);
+				cloudanim1a.SetBool("IsOrder",true);
+				cloudanim2a.SetBool("IsChaos",false);
+				cloudanim2a.SetBool("IsOrder",true);
+				cloudanim1b.SetBool("IsChaos",false);
+				cloudanim1b.SetBool("IsOrder",true);
+				cloudanim2b.SetBool("IsChaos",false);
+				cloudanim2b.SetBool("IsOrder",true);
 			}
 			else if(!gm.skyyes && gm.orderyes){
 				oceananim.SetBool ("IsChaos",false);
