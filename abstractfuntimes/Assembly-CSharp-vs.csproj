@@ -54,6 +54,7 @@
      <Compile Include="Assets\Misc\FadeIn.cs" />
      <Compile Include="Assets\Misc\GameMaster.cs" />
      <Compile Include="Assets\Text\TextActivity.cs" />
+     <None Include="Assets\Environments\Ocean\05_10 ocean chaos anim_fpc\ocean_geoShape.xml" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
      <None Include="Assets\Standard Assets\Environment\Water\Water\Shaders\FXWaterPro.shader" />
      <None Include="Assets\Standard Assets\Characters\FirstPersonCharacter\FirstPersonCharacterGuidelines.txt" />
