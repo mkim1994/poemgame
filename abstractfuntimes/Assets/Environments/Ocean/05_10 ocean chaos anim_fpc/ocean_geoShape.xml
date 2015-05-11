@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<Autodesk_Cache_File>
+  <cacheType Type="OneFile" Format="mcx"/>
+  <time Range="250-12000"/>
+  <cacheTimePerFrame TimePerFrame="250"/>
+  <cacheVersion Version="2.0"/>
+  <extra>C:/Maryyann/S15/experimental animation/Final/PoemGameModeling/scenes/05_09 ocean chaos animation.ma</extra>
+  <extra>maya 2016</extra>
+  <extra>Maryyann</extra>
+  <Channels>
+    <channel0 ChannelName="ocean_geoShape" ChannelType="DoubleVectorArray" ChannelInterpretation="positions" SamplingType="Regular" SamplingRate="250" StartTime="250" EndTime="12000"/>
+    <channel1 ChannelName="ocean_geoShape_normals" ChannelType="DoubleVectorArray" ChannelInterpretation="normals" SamplingType="Regular" SamplingRate="250" StartTime="250" EndTime="12000"/>
+  </Channels>
+</Autodesk_Cache_File>
