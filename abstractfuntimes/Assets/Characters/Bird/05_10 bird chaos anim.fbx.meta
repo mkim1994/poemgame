@@ -1,32 +1,52 @@
 fileFormatVersion: 2
-guid: b14d2b9a29b21134f98a6f07fc9de168
+guid: bb5fcc4a36cc24a4695ef494c9782bac
+timeCreated: 1431319421
+licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: ocean_geo
-    100004: ocean_group
-    100006: root
-    100008: squash1Handle
-    100010: wave_1
-    100012: wave_2
-    100014: wave_2_1
-    100016: wave_3
-    100018: wave_3_1
+    100002: BIRD_GEO
+    100004: HEAD
+    100006: head
+    100008: neck
+    100010: SPINE_ROOT
+    100012: spine_root
+    100014: TAIL_L
+    100016: tail_L
+    100018: TAIL_L_offset
+    100020: tail_L_tip
+    100022: TAIL_M
+    100024: tail_m
+    100026: TAIL_M_OFFSET
+    100028: tail_m_tip
+    100030: TAIL_R
+    100032: tail_R
+    100034: TAIL_R_OFFSET
+    100036: tail_R_tip
     400000: //RootNode
-    400002: ocean_geo
-    400004: ocean_group
-    400006: root
-    400008: squash1Handle
-    400010: wave_1
-    400012: wave_2
-    400014: wave_2_1
-    400016: wave_3
-    400018: wave_3_1
-    4300000: ocean_geo
+    400002: BIRD_GEO
+    400004: HEAD
+    400006: head
+    400008: neck
+    400010: SPINE_ROOT
+    400012: spine_root
+    400014: TAIL_L
+    400016: tail_L
+    400018: TAIL_L_offset
+    400020: tail_L_tip
+    400022: TAIL_M
+    400024: tail_m
+    400026: TAIL_M_OFFSET
+    400028: tail_m_tip
+    400030: TAIL_R
+    400032: tail_R
+    400034: TAIL_R_OFFSET
+    400036: tail_R_tip
+    4300000: BIRD_GEO
     7400000: Take 001
     9500000: //RootNode
-    13700000: ocean_geo
+    13700000: BIRD_GEO
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +66,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: 0
+    globalScale: 1
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
