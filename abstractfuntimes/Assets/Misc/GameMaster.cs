@@ -10,6 +10,8 @@ public class GameMaster : MonoBehaviour {
 	public GameObject skylight;
 	public GameObject oceanlight;
 
+	public AudioSource skyaudio;
+	public AudioSource oceanaudio;
 
 	public bool birdyes;
 	public bool skyyes;
@@ -46,6 +48,14 @@ public class GameMaster : MonoBehaviour {
 	FadeIn fade;
 
 	void Start () {
+		skyaudio = GameObject.Find("SkyAudio").GetComponent<AudioSource>();
+		oceanaudio = GameObject.Find ("OceanAudio").GetComponent<AudioSource>();
+
+		//skyaudio.Play ();
+		oceanaudio.volume = 0;
+		//oceanaudio.Play ();
+
+
 		fade = GameObject.Find ("Transitions").GetComponent<FadeIn>();
 
 		fps.SetActive (false);
@@ -201,6 +211,9 @@ public class GameMaster : MonoBehaviour {
 
 			skylight.SetActive(true);
 			oceanlight.SetActive(false);
+
+			oceanaudio.volume = 0;
+			skyaudio.volume = 1;
 		}
 		else if(!skyyes){
 			cam.clearFlags = CameraClearFlags.SolidColor;
@@ -212,6 +225,9 @@ public class GameMaster : MonoBehaviour {
 
 			skylight.SetActive(false);
 			oceanlight.SetActive(true);
+
+			skyaudio.volume = 0;
+			oceanaudio.volume = 1;
 		}
 
 		if(Input.GetMouseButtonDown (1)){
