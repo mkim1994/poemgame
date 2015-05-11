@@ -19,8 +19,12 @@ public class GameMaster : MonoBehaviour {
 	public GameObject skywater;
 	public GameObject oceanwater;
 
-	int combocount = 16; //2^4 = 16
-	bool[] combos;
+	int combocount1 = 2;
+	int combocount2 = 4;
+	int combocount3 = 8;
+	int combocount4 = 16; //2^4 = 16
+	bool[] combos1, combos2, combos3, combos4;
+	bool stage1, stage2, stage3, stage4;
 
 	Camera cam;
 	Camera charcam;
@@ -32,9 +36,11 @@ public class GameMaster : MonoBehaviour {
 
 	int zoom = 2;
 	int normal = 50;
-	
+
+
 	public GameObject text;
 	public Sprite[] linechanges;
+	GameObject text2, text3, text4;
 	SpriteRenderer line1,line2,line3,line4;
 
 	FadeIn fade;
@@ -59,38 +65,115 @@ public class GameMaster : MonoBehaviour {
 		cam = thirdpcam.GetComponent<Camera>();
 		charcam = fps.transform.FindChild ("FirstPersonCharacter").gameObject.GetComponent<Camera>();
 
+		combos1 = new bool[combocount1];
+		combos2 = new bool[combocount2];
+		combos3 = new bool[combocount3];
+		combos4 = new bool[combocount4];
 
-		combos = new bool[combocount];
-		for(int i = 0; i<combocount; i++){
-			combos[i] = false;
+		for(int a = 0; a<combocount1; a++){
+			combos1[a] = false;
 		}
-		Transform text1 = text.transform.FindChild("text1");
-		Transform text2 = text.transform.FindChild("text2");
-		Transform text3 = text.transform.FindChild("text3");
-		Transform text4 = text.transform.FindChild("text4");
+		for(int b = 0; b<combocount2; b++){
+			combos2[b] = false;
+		}
+		for(int c = 0; c<combocount3; c++){
+			combos3[c] = false;
+		}
+		for(int d = 0; d<combocount4; d++){
+			combos4[d] = false;
+		}
+		Transform t1 = text.transform.FindChild("text1");
+		Transform t2 = text.transform.FindChild("text2");
+		Transform t3 = text.transform.FindChild("text3");
+		Transform t4 = text.transform.FindChild("text4");
 
-		line1 = text1.FindChild("l1").gameObject.GetComponent<SpriteRenderer>();
-		line2 = text2.FindChild("l2").gameObject.GetComponent<SpriteRenderer>();
-		line3 = text3.FindChild("l3").gameObject.GetComponent<SpriteRenderer>();
-		line4 = text4.FindChild("l4").gameObject.GetComponent<SpriteRenderer>();
+		//text1 = t1.gameObject;
+		text2 = t2.gameObject;
+		text3 = t3.gameObject;
+		text4 = t4.gameObject;
+
+		line1 = t1.FindChild("l1").gameObject.GetComponent<SpriteRenderer>();
+		line2 = t2.FindChild("l2").gameObject.GetComponent<SpriteRenderer>();
+		line3 = t3.FindChild("l3").gameObject.GetComponent<SpriteRenderer>();
+		line4 = t4.FindChild("l4").gameObject.GetComponent<SpriteRenderer>();
+
+		stage1 = true; stage2 = false; stage3 = false; stage4 = false;
+
+		text2.transform.position -= new Vector3(100,0,0);
+		text3.transform.position += new Vector3(100,0,0);
+		text4.transform.position += new Vector3(100,0,0);
+
 	}
 
 	void Update (){
 
-		//keep track of combos
-		int count = 0;
-		for(int i = 0; i < combocount; i++){
-			if(combos[i]){
-				count++;
-			}
+		if(stage1  && stage2){
+			Invoke("stage1n2", 0.5f);
+			stage1 = false;
 		}
-		Debug.Log(count);
-		if(count == combocount){
-			fade.BeginFade(1);
-			Invoke("loadfinal", 1.0f);
+		else if(stage2  && stage3){
+			Invoke("stage2n3", 0.5f);
+			stage2 = false;
+		}
+		else if(stage3  && stage4){
+			Invoke("stage3n4", 0.5f);
+			stage3 = false;
 		}
 
-		checkCombos();
+		if(stage1){
+			checkCombos1();
+			int count = 0;
+			for(int i = 0; i<combocount1; i++){
+				if(combos1[i]){
+					count++;
+				}
+			}
+			if(count==combocount1){
+				stage2 = true;
+				fade.BeginFade(1);
+			}
+		}
+		else if(stage2){
+			checkCombos2();
+			int count = 0;
+			for(int i = 0; i<combocount2; i++){
+				if(combos2[i]){
+					count++;
+				}
+			}
+			if(count==combocount2){
+				stage3 = true;
+				fade.BeginFade(1);
+			}
+		}
+		else if(stage3){
+			checkCombos3();
+			int count = 0;
+			for(int i = 0; i<combocount3; i++){
+				if(combos3[i]){
+					count++;
+				}
+			}
+			if(count==combocount3){
+				stage4 = true;
+				fade.BeginFade(1);
+			}
+		}
+		else if(stage4){
+			checkCombos4();
+			//keep track of combos
+			int count = 0;
+			for(int i = 0; i < combocount4; i++){
+				if(combos4[i]){
+					count++;
+				}
+			}
+			//Debug.Log(count);
+			if(count == combocount4){
+				fade.BeginFade(1);
+				Invoke("loadfinal", 1.0f);
+			}
+		}
 
 
 		//actual game
@@ -167,41 +250,109 @@ public class GameMaster : MonoBehaviour {
 		Application.LoadLevel ("Final");
 	}
 
-	void checkCombos(){
+	void checkCombos1(){
+		if(line1.sprite == linechanges[0]){
+			combos1[0] = true;
+		}
+		else{
+			combos1[1] = true;
+		}
+	}
+
+	void checkCombos2(){
+		if(line1.sprite == linechanges[0]){
+			if(line2.sprite == linechanges[2]){
+				combos2[0] = true;
+			}
+			else{
+				combos2[1] = true;
+			}
+		}
+		else{
+			if(line2.sprite == linechanges[2]){
+				combos2[2] = true;
+			}
+			else{
+				combos2[3] = true;
+			}
+		}
+	}
+
+	void checkCombos3(){
+		if(line1.sprite == linechanges[0]){
+			if(line2.sprite == linechanges[2]){
+				if(line3.sprite == linechanges[4]){
+					combos3[0] = true;
+				}
+				else{
+					combos3[1] = true;
+				}
+			}
+			else{
+				if(line3.sprite == linechanges[4]){
+					combos3[2] = true;
+				}
+				else{
+					combos3[3] = true;
+				}
+			}
+		}
+		else{
+			if(line2.sprite == linechanges[2]){
+				if(line3.sprite == linechanges[4]){
+					combos3[4] = true;
+				}
+				else{
+					combos3[5] = true;
+				}
+			}
+			else{
+				if(line3.sprite == linechanges[4]){
+					combos3[6] = true;
+				}
+				else{
+					combos3[7] = true;
+				}
+			}
+		}
+	}
+
+	void checkCombos4(){
+		
 		if(line1.sprite == linechanges[0]){ //if equal to writer
 			if(line2.sprite == linechanges[2]){ //if equal to spontaneous
 				if(line3.sprite == linechanges[4]){ //if equal to order
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[0] = true;
+						combos4[0] = true;
 					}
 					else{
-						combos[1] = true;
+						combos4[1] = true;
 					}
 				}
 				else{
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[2] = true;
+						combos4[2] = true;
 					}
 					else{
-						combos[3] = true;
+						combos4[3] = true;
 					}
 				}
 			}
 			else{
 				if(line3.sprite == linechanges[4]){ //if equal to order
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[4] = true;
+						combos4[4] = true;
 					}
 					else{
-						combos[5] = true;
+						combos4[5] = true;
 					}
 				}
 				else{
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[6] = true;
+						combos4[6] = true;
 					}
 					else{
-						combos[7] = true;
+						combos4[7] = true;
 					}
 				}
 			}
@@ -210,39 +361,54 @@ public class GameMaster : MonoBehaviour {
 			if(line2.sprite == linechanges[2]){ //if equal to spontaneous
 				if(line3.sprite == linechanges[4]){ //if equal to order
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[8] = true;
+						combos4[8] = true;
 					}
 					else{
-						combos[9] = true;
+						combos4[9] = true;
 					}
 				}
 				else{
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[10] = true;
+						combos4[10] = true;
 					}
 					else{
-						combos[11] = true;
+						combos4[11] = true;
 					}
 				}
 			}
 			else{
 				if(line3.sprite == linechanges[4]){ //if equal to order
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[12] = true;
+						combos4[12] = true;
 					}
 					else{
-						combos[13] = true;
+						combos4[13] = true;
 					}
 				}
 				else{
 					if(line4.sprite == linechanges[6]){ //if equal to flowing
-						combos[14] = true;
+						combos4[14] = true;
 					}
 					else{
-						combos[15] = true;
+						combos4[15] = true;
 					}
 				}
 			}
 		}
+	}
+
+	void stage1n2(){
+		fade.BeginFade(-1);
+		text2.transform.position += new Vector3(100,0,0);
+	}
+
+	void stage2n3(){
+		fade.BeginFade(-1);
+		text3.transform.position -= new Vector3(100,0,0);
+	}
+
+	void stage3n4(){
+		fade.BeginFade(-1);
+		text4.transform.position -= new Vector3(100,0,0);
 	}
 }
