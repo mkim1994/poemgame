@@ -1,6 +1,11 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
 guid: b14d2b9a29b21134f98a6f07fc9de168
 timeCreated: 1431309583
+=======
+guid: 1781909aafa89a042ae0a895d3fb70ce
+timeCreated: 1431311706
+>>>>>>> origin/master
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -9,6 +14,7 @@ ModelImporter:
     100002: ocean_geo
     100004: ocean_group
     100006: root
+<<<<<<< HEAD
     100008: ROOT_CNTRL
     100010: squash1Handle
     100012: wave_1
@@ -24,10 +30,19 @@ ModelImporter:
     100032: wave_3_1_tip
     100034: WAVE_3_CNTRL
     100036: WAVE_3_TIP_CNTRL
+=======
+    100008: wave_1
+    100010: wave_2
+    100012: wave_2_1
+    100014: wave_3
+    100016: wave_3_1
+    100018: squash1Handle
+>>>>>>> origin/master
     400000: //RootNode
     400002: ocean_geo
     400004: ocean_group
     400006: root
+<<<<<<< HEAD
     400008: ROOT_CNTRL
     400010: squash1Handle
     400012: wave_1
@@ -43,6 +58,14 @@ ModelImporter:
     400032: wave_3_1_tip
     400034: WAVE_3_CNTRL
     400036: WAVE_3_TIP_CNTRL
+=======
+    400008: wave_1
+    400010: wave_2
+    400012: wave_2_1
+    400014: wave_3
+    400016: wave_3_1
+    400018: squash1Handle
+>>>>>>> origin/master
     4300000: ocean_geo
     7400000: Take 001
     9500000: //RootNode
