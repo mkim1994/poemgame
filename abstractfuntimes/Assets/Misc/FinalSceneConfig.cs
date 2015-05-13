@@ -7,6 +7,7 @@ public class FinalSceneConfig : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		fade = GameObject.Find ("Transitions").GetComponent<FadeIn>();
+		fade.fadeSpeed = 0.4f;
 		fade.BeginFade(-1);
 
 		player = GameObject.Find ("Video").GetComponent<VideoPlayer>();
@@ -15,11 +16,12 @@ public class FinalSceneConfig : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-		Invoke("playvid", 1.0f);
+		Invoke("playvid", 0.4f);
 	}
 
 	void playvid(){
 		player.Play ();
+		fade.fadeSpeed = 0.8f;
 
 	}
 }

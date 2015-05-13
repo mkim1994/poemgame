@@ -12,7 +12,7 @@ public class VideoPlayer : MonoBehaviour {
 	int number_of_stills = 0;
 	public bool loop = false;
 	public bool playOnStart = false;
-	public int fps = 30;
+	public int fps =30;
 	
 	private int stills = 0;
 	private bool play = false;
@@ -54,8 +54,10 @@ public class VideoPlayer : MonoBehaviour {
 			Texture2D MainTex = movie_stills[stills] as Texture2D;
 			GetComponent<Renderer>().material.SetTexture("_MainTex", MainTex);
 			stills += 1;
-			int fps_fixer = fps*3;
-			float wait_time = 1.0f/fps_fixer;
+			//int fps_fixer = fps*3;
+			//float wait_time = 1.0f/fps_fixer;
+			//float wait_time = 100.0f;
+			float wait_time = 2734958234582390458354.0f;
 			yield return new WaitForSeconds(wait_time);
 			play = true;
 		}
